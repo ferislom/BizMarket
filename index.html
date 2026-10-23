@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>BizMarket — объявления и покупки в Узбекистане</title>
+
+<meta name="description" content="BizMarket — онлайн-площадка объявлений в Узбекистане. Покупайте, продавайте и размещайте свои товары.">
+
+<meta name="keywords" content="BizMarket, биз маркет, объявления, купить, продать, товары, Узбекистан">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://ВАШ-САЙТ/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "BizMarket",
+  "alternateName": "БизМаркет",
+  "url": "https://ВАШ-САЙТ/"
+}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BizMarket — объявления</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #151515;
+}
+
+/* HEADER */
+
+header {
+    background: #111;
+    color: white;
+    padding: 16px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #ffd400;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.yellow-btn {
+    background: #ffd400;
+    color: #111;
+    padding: 12px 18px;
+    border-radius: 10px;
+}
+
+.dark-btn {
+    background: #222;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+}
+
+/* HERO */
+
+.hero {
+    background: #ffd400;
+    padding: 55px 5%;
+}
+
+.hero-inner {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 75px);
+    line-height: .95;
+    max-width: 850px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    max-width: 650px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+/* SEARCH */
+
+.search {
+    max-width: 850px;
+    background: white;
+    padding: 7px;
+    border-radius: 14px;
+    display: flex;
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
+}
+
+.search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.search button {
+    background: #111;
+    color: white;
+    border-radius: 9px;
+    padding: 0 25px;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.top-line h2 {
+    font-size: 30px;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.filter {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px 16px;
+    border-radius: 20px;
+}
+
+.filter.active {
+    background: #ffd400;
+    border-color: #ffd400;
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-image {
+    height: 220px;
+    background: #eee;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-photo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 16px;
+}
+
+.favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    font-size: 21px;
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.category {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.description {
+    color: #555;
+    line-height: 1.4;
+    min-height: 42px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 900;
+    margin: 15px 0;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.card-buttons button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.contact-btn {
+    background: #ffd400;
+}
+
+.delete-btn {
+    background: #111;
+    color: white;
+}
+
+/* EMPTY */
+
+.empty {
+    grid-column: 1 / -1;
+    background: white;
+    padding: 70px 20px;
+    text-align: center;
+    border-radius: 18px;
+}
+
+.empty h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.modal-box h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.image-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.cancel {
+    background: #eee;
+}
+
+/* TELEGRAM */
+
+.telegram-section {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.telegram-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.telegram-section p {
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.telegram-btn {
+    display: inline-block;
+    background: #ffd400;
+    color: #111;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111;
+    color: #777;
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #333;
+}
+
+/* MOBILE */
+
+@media(max-width: 650px) {
+
+    header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-right {
+        width: 100%;
+    }
+
+    .header-right button {
+        flex: 1;
+    }
+
+    .search {
+        flex-direction: column;
+        background: transparent;
+        box-shadow: none;
+        gap: 8px;
+    }
+
+    .search input {
+        border-radius: 10px;
+    }
+
+    .search button {
+        padding: 14px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    .top-line {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<h2>BizMarket — объявления в Узбекистане</h2>
+
+<p>
+Размещайте свои объявления, продавайте товары и находите интересные предложения на BizMarket.
+</p>
+
+<header>
+
+    <div class="logo">
+        Biz<span>Market</span>
+    </div>
+
+    <div class="header-right">
+
+        <button
+            class="yellow-btn"
+            onclick="openModal()">
+            ＋ Продать
+        </button>
+
+        <button
+            class="dark-btn"
+            onclick="showFavorites()">
+            ♥ Избранное
+        </button>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <h1>
+            Купи.<br>
+            Продай.<br>
+            BizMarket.
+        </h1>
+
+        <p>
+            Размещайте свои объявления,
+            находите товары и связывайтесь
+            с продавцами.
+        </p>
+
+        <div class="search">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Что хотите найти?"
+                oninput="renderProducts()"
+            >
+
+            <button onclick="renderProducts()">
+                Найти
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <div class="top-line">
+
+        <h2>
+            Объявления
+        </h2>
+
+        <button
+            class="yellow-btn"
+            onclick="openModal()">
+            ＋ Разместить объявление
+        </button>
+
+    </div>
+
+
+    <div class="filters">
+
+        <button
+            class="filter active"
+            onclick="changeCategory('Все', this)">
+            Все
+        </button>
+
+        <button
+            class="filter"
+            onclick="changeCategory('Электроника', this)">
+            Электроника
+        </button>
+
+        <button
+            class="filter"
+            onclick="changeCategory('Авто', this)">
+            Авто
+        </button>
+
+        <button
+            class="filter"
+            onclick="changeCategory('Недвижимость', this)">
+            Недвижимость
+        </button>
+
+        <button
+            class="filter"
+            onclick="changeCategory('Одежда', this)">
+            Одежда
+        </button>
+
+        <button
+            class="filter"
+            onclick="changeCategory('Другое', this)">
+            Другое
+        </button>
+
+    </div>
+
+
+    <div
+        id="products"
+        class="products">
+    </div>
+
+</main>
+
+
+<section class="telegram-section">
+
+    <h2>
+        Есть вопрос?
+    </h2>
+
+    <p>
+        Свяжитесь с BizMarket через Telegram
+    </p>
+
+    <a
+        class="telegram-btn"
+        href="https://t.me/BizMarketOriginalSite"
+        target="_blank">
+        ✈ Написать в Telegram
+    </a>
+
+</section>
+
+
+<footer>
+
+    © 2026 BizMarket
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div
+    id="modal"
+    class="modal">
+
+    <div class="modal-box">
+
+        <h2>
+            Разместить объявление
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Название товара
+            </label>
+
+            <input
+                id="productName"
+                type="text"
+                placeholder="Например: iPhone 15"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Цена
+            </label>
+
+            <input
+                id="productPrice"
+                type="text"
+                placeholder="Например: 5 000 000 сум"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Категория
+            </label>
+
+            <select id="productCategory">
+
+                <option>Электроника</option>
+                <option>Авто</option>
+                <option>Недвижимость</option>
+                <option>Одежда</option>
+                <option>Другое</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Описание
+            </label>
+
+            <textarea
+                id="productDescription"
+                placeholder="Опишите товар..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Фотографии товара
+            </label>
+
+            <input
+                id="productImages"
+                type="file"
+                accept="image/*"
+                multiple
+                onchange="previewImages(event)"
+            >
+
+            <div
+                id="imagePreview"
+                class="image-preview">
+            </div>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel"
+                onclick="closeModal()">
+                Отмена
+            </button>
+
+            <button
+                class="yellow-btn"
+                onclick="addProduct()">
+                Опубликовать
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ДАННЫЕ */
+
+let products =
+    JSON.parse(
+        localStorage.getItem("bizmarket_products")
+    ) || [];
+
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("bizmarket_favorites")
+    ) || [];
+
+
+let currentCategory = "Все";
+
+
+/* СОХРАНЕНИЕ */
+
+function saveData() {
+
+    localStorage.setItem(
+        "bizmarket_products",
+        JSON.stringify(products)
+    );
+
+    localStorage.setItem(
+        "bizmarket_favorites",
+        JSON.stringify(favorites)
+    );
+}
+
+
+/* ОТКРЫТЬ */
+
+function openModal() {
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+}
+
+
+/* ЗАКРЫТЬ */
+
+function closeModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* ПРЕДПРОСМОТР ФОТО */
+
+function previewImages(event) {
+
+    const files =
+        event.target.files;
+
+    const preview =
+        document.getElementById("imagePreview");
+
+    preview.innerHTML = "";
+
+    for (
+        let i = 0;
+        i < files.length;
+        i++
+    ) {
+
+        const reader =
+            new FileReader();
+
+        reader.onload =
+            function(e) {
+
+                const img =
+                    document.createElement("img");
+
+                img.src =
+                    e.target.result;
+
+                preview.appendChild(img);
+
+            };
+
+        reader.readAsDataURL(files[i]);
+    }
+}
+
+
+/* ДОБАВЛЕНИЕ ОБЪЯВЛЕНИЯ */
+
+function addProduct() {
+
+    const name =
+        document
+        .getElementById("productName")
+        .value
+        .trim();
+
+    const price =
+        document
+        .getElementById("productPrice")
+        .value
+        .trim();
+
+    const category =
+        document
+        .getElementById("productCategory")
+        .value;
+
+    const description =
+        document
+        .getElementById("productDescription")
+        .value
+        .trim();
+
+    const files =
+        document
+        .getElementById("productImages")
+        .files;
+
+
+    if (!name) {
+
+        alert("Введите название товара.");
+
+        return;
+    }
+
+
+    if (!price) {
+
+        alert("Введите цену.");
+
+        return;
+    }
+
+
+    const images = [];
+
+    if (files.length > 0) {
+
+        let loaded = 0;
+
+        for (
+            let i = 0;
+            i < files.length;
+            i++
+        ) {
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function(e) {
+
+                    images.push(e.target.result);
+
+                    loaded++;
+
+                    if (
+                        loaded === files.length
+                    ) {
+
+                        createProduct(
+                            name,
+                            price,
+                            category,
+                            description,
+                            images
+                        );
+
+                    }
+
+                };
+
+            reader.readAsDataURL(files[i]);
+        }
+
+    } else {
+
+        createProduct(
+            name,
+            price,
+            category,
+            description,
+            []
+        );
+
+    }
+
+}
+
+
+/* СОЗДАНИЕ */
+
+function createProduct(
+    name,
+    price,
+    category,
+    description,
+    images
+) {
+
+    const product = {
+
+        id: Date.now(),
+
+        name: name,
+
+        price: price,
+
+        category: category,
+
+        description:
+            description ||
+            "Описание отсутствует.",
+
+        images: images,
+
+        date:
+            new Date().toLocaleString("ru-RU")
+
+    };
+
+
+    products.unshift(product);
+
+    saveData();
+
+    clearForm();
+
+    closeModal();
+
+    renderProducts();
+
+    alert(
+        "Объявление опубликовано!"
+    );
+}
+
+
+/* ОЧИСТКА ФОРМЫ */
+
+function clearForm() {
+
+    document
+        .getElementById("productName")
+        .value = "";
+
+    document
+        .getElementById("productPrice")
+        .value = "";
+
+    document
+        .getElementById("productDescription")
+        .value = "";
+
+    document
+        .getElementById("productImages")
+        .value = "";
+
+    document
+        .getElementById("imagePreview")
+        .innerHTML = "";
+}
+
+
+/* ОТОБРАЖЕНИЕ */
+
+function renderProducts() {
+
+    const container =
+        document.getElementById("products");
+
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let filtered =
+        products.filter(product => {
+
+            const text =
+                (
+                    product.name +
+                    " " +
+                    product.description +
+                    " " +
+                    product.category
+                ).toLowerCase();
+
+
+            const searchMatch =
+                text.includes(search);
+
+
+            const categoryMatch =
+                currentCategory === "Все" ||
+                product.category === currentCategory;
+
+
+            return (
+                searchMatch &&
+                categoryMatch
+            );
+
+        });
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <h3>
+                    Пока нет объявлений
+                </h3>
+
+                <p>
+                    Будьте первым — разместите
+                    свой товар на BizMarket.
+                </p>
+
+                <br>
+
+                <button
+                    class="yellow-btn"
+                    onclick="openModal()">
+                    ＋ Продать товар
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        filtered.map(product => {
+
+            const favorite =
+                favorites.includes(product.id);
+
+
+            let imageHTML = "";
+
+
+            if (
+                product.images &&
+                product.images.length > 0
+            ) {
+
+                imageHTML = `
+
+                    <img
+                        src="${product.images[0]}"
+                        alt="${escapeHTML(product.name)}"
+                    >
+
+                `;
+
+            } else {
+
+                imageHTML = `
+
+                    <div class="no-photo">
+                        📷 Без фотографии
+                    </div>
+
+                `;
+
+            }
+
+
+            return `
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        ${imageHTML}
+
+                        <button
+                            class="favorite"
+                            onclick="toggleFavorite(${product.id})">
+
+                            ${
+                                favorite
+                                ? "♥"
+                                : "♡"
+                            }
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <div class="category">
+
+                            ${escapeHTML(product.category)}
+
+                        </div>
+
+
+                        <h3>
+
+                            ${escapeHTML(product.name)}
+
+                        </h3>
+
+
+                        <p class="description">
+
+                            ${
+                                escapeHTML(
+                                    product.description
+                                )
+                            }
+
+                        </p>
+
+
+                        <div class="price">
+
+                            ${escapeHTML(product.price)}
+
+                        </div>
+
+
+                        <div class="card-buttons">
+
+                            <button
+                                class="contact-btn"
+                                onclick="contactSeller()">
+
+                                Связаться
+
+                            </button>
+
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteProduct(${product.id})">
+
+                                Удалить
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* КАТЕГОРИЯ */
+
+function changeCategory(
+    category,
+    button
+) {
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    renderProducts();
+}
+
+
+/* ИЗБРАННОЕ */
+
+function toggleFavorite(id) {
+
+    if (
+        favorites.includes(id)
+    ) {
+
+        favorites =
+            favorites.filter(
+                item => item !== id
+            );
+
+    } else {
+
+        favorites.push(id);
+
+    }
+
+
+    saveData();
+
+    renderProducts();
+}
+
+
+/* ПОКАЗАТЬ ИЗБРАННОЕ */
+
+function showFavorites() {
+
+    if (
+        favorites.length === 0
+    ) {
+
+        alert(
+            "В избранном пока ничего нет."
+        );
+
+        return;
+    }
+
+
+    const names =
+        products
+        .filter(
+            product =>
+                favorites.includes(
+                    product.id
+                )
+        )
+        .map(
+            product =>
+                "• " + product.name
+        )
+        .join("\n");
+
+
+    alert(
+        "Избранные объявления:\n\n" +
+        names
+    );
+}
+
+
+/* TELEGRAM */
+
+function contactSeller() {
+
+    window.open(
+        "https://t.me/BizMarketOriginalSite",
+        "_blank"
+    );
+
+}
+
+
+/* УДАЛЕНИЕ */
+
+function deleteProduct(id) {
+
+    const ok =
+        confirm(
+            "Удалить это объявление?"
+        );
+
+
+    if (!ok) return;
+
+
+    products =
+        products.filter(
+            product =>
+                product.id !== id
+        );
+
+
+    favorites =
+        favorites.filter(
+            item =>
+                item !== id
+        );
+
+
+    saveData();
+
+    renderProducts();
+
+}
+
+
+/* ЗАЩИТА HTML */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* ЗАПУСК */
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
